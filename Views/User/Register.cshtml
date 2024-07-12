@@ -1,0 +1,16 @@
+﻿@model LeaveManagementSystem.ViewModel.RegisterUserViewModel;
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+    </head>
+    <body>
+    <form method="post" asp-action="MakeUser">
+        <input type="text" asp-for="FirstName" class="form-control mt-3" placeholder="Input your FirstName" />
+        <input type="text" asp-for="LastName" class="form-control mt-3" placeholder="Input your LastName" />
+        <input type="email" asp-for="Email" class="form-control mt-3" placeholder="Input your Email" />
+        <input type="password" asp-for="Password" class="form-control mt-3" placeholder="Input your Password" />
+        <button class="btn btn-primary mt-3">Submit</button>
+        </form>
+    </body>
+    </html>

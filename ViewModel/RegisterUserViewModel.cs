@@ -18,6 +18,7 @@ namespace LeaveManagementSystem.ViewModel
         [MaxLength(100)]
         [EmailAddress] 
         public string Email { get; set;}
+        public int Position { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now; 
         public DateTime LastUpdatedAt { get; set;} = DateTime.Now;
 

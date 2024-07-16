@@ -19,6 +19,39 @@ namespace LeaveManagementSystem.Migrations
                 .HasAnnotation("ProductVersion", "8.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("LeaveManagementSystem.Models.LeaveRequest", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("AllowedDuration")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DaysLeft")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Duration")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("Permitted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("LeaveRequests");
+                });
+
             modelBuilder.Entity("LeaveManagementSystem.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -63,6 +96,7 @@ namespace LeaveManagementSystem.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Reason")
+                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)");
 
@@ -75,6 +109,17 @@ namespace LeaveManagementSystem.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("LeaveManagementSystem.Models.LeaveRequest", b =>
+                {
+                    b.HasOne("LeaveManagementSystem.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

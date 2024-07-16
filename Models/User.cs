@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LeaveManagementSystem.Models
 {
@@ -17,7 +18,7 @@ namespace LeaveManagementSystem.Models
         public required string HashedPassword { get; set; }
         public bool Onleave { get; set; } = false;
         [StringLength (150)]
-        public string? Reason { get; set; } = string.Empty;
+        public string Reason { get; set; } = string.Empty;
         public DateTime Duration { get; set; } = DateTime.Now;
         public int AllowedDuration { get; set; } = 5;
         public int RemainingDurationAllowed { get; set; }

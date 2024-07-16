@@ -9,6 +9,6 @@ namespace LeaveManagementSystem.ViewModel
         [MaxLength(150)]
         [MinLength(5)]
         public string Reason { get; set; } = string.Empty;
-        public int Duration { get; set; }
+        public DateTime Day { get; set; }
     }
 }
